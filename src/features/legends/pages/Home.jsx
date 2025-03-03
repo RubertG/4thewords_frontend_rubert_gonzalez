@@ -1,33 +1,18 @@
-import { useEffect } from "react"
-import { deleteLegend } from "../services/api"
 import { LegendCard } from "../components/legend-list/LegendCard"
-import { toast } from "sonner"
 import { LegendList } from "../components/legend-list/LegendList"
 import { Loading } from "../../../components/ui/loading"
-import { useLegendsStore } from "../stores/useLegends.store"
+import { Button } from "../../../components/ui/Button"
+import { LegendFilters } from "../components/legend-filters/legent-filters"
+import { Filter } from "lucide-react"
+import { useLegends } from "../hooks/useLegends"
 
 export const Home = () => {
   const {
-    error, legends, loading,
-    getLegendsStore, deleteLegendStore
-  } = useLegendsStore(state => state)
-
-  useEffect(() => {
-    getLegendsStore()
-  }, [getLegendsStore])
-
-  const onDelete = async (legendId) => {
-    const { error, message } = await deleteLegend(legendId)
-
-    if (error) {
-      toast.error(message)
-
-      return
-    }
-
-    deleteLegendStore(legendId)
-    toast.success(message)
-  }
+    error, legendsFiltered, loading, filters,
+    onDelete, getBy,
+    setFilters, filterLegends, clearFilters,
+    openFilters, toggleOpenFilters
+  } = useLegends(state => state)
 
   return (
     <>
@@ -35,13 +20,44 @@ export const Home = () => {
         Leyendas Costarricenses
       </h1>
 
-      <main>
-        
+      <main className="mt-8">
+        <section>
+          <div className="flex justify-between items-center">
+            <Button size="small">
+              Agregar leyenda
+            </Button>
+
+            <Button
+              variant="outline"
+              size="small"
+              className="ml-4"
+              onClick={toggleOpenFilters}
+            >
+              <Filter />
+              Filtros
+            </Button>
+          </div>
+
+          {
+            openFilters && (
+              <section className="my-6 fade-in">
+                <LegendFilters
+                  getBy={getBy}
+                  filters={filters}
+                  setFilters={setFilters}
+                  filterLegends={filterLegends}
+                  clearFilters={clearFilters}
+                />
+              </section>
+            )
+          }
+        </section>
 
         <LegendList
+          className="mt-8"
           loading={loading}
           error={error}
-          legends={legends}
+          legends={legendsFiltered}
           onLoading={<Loading className="mt-4 h-[90dvh] flex justify-center pt-56" />}
           onError={
             <li className="mt-10 text-center">
@@ -49,7 +65,11 @@ export const Home = () => {
               <p>Por favor, intenta recargar la página.</p>
             </li>
           }
-          onEmpty={<li></li>}
+          onEmpty={
+            <li>
+              <p className="text-center mt-10">No se encontraron leyendas.</p>
+            </li>
+          }
         >
           {
             (legends) => legends.map((legend) => (

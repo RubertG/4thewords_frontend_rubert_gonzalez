@@ -2,7 +2,7 @@
 
 Autor: Rubert Gonzalez Perez.
 
-## Instalación del frontend 
+## Instalación del frontend
 
 Para instalar el frontend, se debe ejecutar el siguiente comando en la carpeta raíz del proyecto:
 
