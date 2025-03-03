@@ -1,4 +1,5 @@
 export const LegendList = ({
+  className,
   loading,
   error,
   legends,
@@ -8,7 +9,7 @@ export const LegendList = ({
   onEmpty
 }) => {
   return (
-    <ul>
+    <ul className={className}>
       {loading && onLoading}
       {error && !loading && onError}
       {legends.length === 0 && !loading && !error && onEmpty}
