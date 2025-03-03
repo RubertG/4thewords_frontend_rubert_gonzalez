@@ -22,3 +22,28 @@ export const getLegends = async () => {
     }
   }
 }
+
+export const deleteLegend = async (id) => {
+  try {
+    const response = await fetch(API_ROUTES.LEGENDS.DELETE(id), {
+      method: 'DELETE'
+    })
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(typeof data?.detail === "string" ? data?.detail : "Error al eliminar la leyenda")
+    }
+
+    return {
+      error: false,
+      message: "Leyenda eliminada correctamente"
+    }
+  } catch (error) {
+    console.error(error)
+
+    return {
+      error: true,
+      message: error?.message || "Error al eliminar la leyenda"
+    }
+  }
+}
