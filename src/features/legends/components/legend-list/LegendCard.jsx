@@ -1,11 +1,11 @@
 import clsx from "clsx"
-import { Badge } from "../../../components/ui/Badge"
+import { Badge } from "../../../../components/ui/Badge"
 import { UbicationItem } from "./UbicationItem"
-import { Button } from "../../../components/ui/Button"
-import dayjs from "../../../utils/dayjsConfig"
+import dayjs from "../../../../utils/dayjsConfig"
+import { LegendButtons } from "./LegendButtons"
 
 export const LegendCard = ({
-  legend, className
+  legend, className, onDelete
 }) => {
   const formatted_creation_date = new Date(legend.legend_date).toLocaleDateString("es-CR", {
     year: "numeric",
@@ -49,21 +49,10 @@ export const LegendCard = ({
           <div className="mt-2 flex items-center justify-between flex-wrap gap-2">
             <i className="text-gray-600 text-sm">Creado {timeSinceCreation}.</i>
 
-            <div>
-              <Button
-                variant="ghost"
-                size="small"
-              >
-                Eliminar
-              </Button>
-
-              <Button
-                className="ml-2"
-                size="small"
-              >
-                Editar
-              </Button>
-            </div>
+            <LegendButtons
+              legend={legend}
+              onDelete={onDelete}
+            />
           </div>
         </div>
       </div>
