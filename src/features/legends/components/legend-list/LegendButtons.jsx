@@ -1,4 +1,4 @@
-import { NavLink } from "react-router"
+import { Link } from "react-router"
 import { Button } from "../../../../components/ui/Button"
 import { Modal } from "../../../../components/ui/Modal"
 import { useDeleteConfirmation } from "../../hooks/useDeleteConfirmation"
@@ -20,14 +20,14 @@ export const LegendButtons = ({
           Eliminar
         </Button>
 
-        <NavLink to={`/editar-leyenda/${legend.id}`}>
+        <Link to={`/editar-leyenda/${legend.id}`}>
           <Button
             className="ml-2"
             size="small"
           >
             Editar
           </Button>
-        </NavLink>
+        </Link>
       </div>
 
       <Modal

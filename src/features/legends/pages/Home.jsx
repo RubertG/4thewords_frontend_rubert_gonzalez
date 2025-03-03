@@ -5,6 +5,7 @@ import { Button } from "../../../components/ui/Button"
 import { LegendFilters } from "../components/legend-filters/legent-filters"
 import { Filter } from "lucide-react"
 import { useLegends } from "../hooks/useLegends"
+import { Link } from "react-router"
 
 export const Home = () => {
   const {
@@ -23,9 +24,11 @@ export const Home = () => {
       <main className="mt-8">
         <section>
           <div className="flex justify-between items-center">
-            <Button size="small">
-              Agregar leyenda
-            </Button>
+            <Link to="/crear-leyenda">
+              <Button size="small">
+                Agregar leyenda
+              </Button>
+            </Link>
 
             <Button
               variant="outline"
