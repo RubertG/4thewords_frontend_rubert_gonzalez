@@ -6,6 +6,7 @@ import { LegendFilters } from "../components/legend-filters/legent-filters"
 import { Filter } from "lucide-react"
 import { useLegends } from "../hooks/useLegends"
 import { Link } from "react-router"
+import { Title } from "../../../components/ui/Title"
 
 export const Home = () => {
   const {
@@ -17,16 +18,16 @@ export const Home = () => {
 
   return (
     <>
-      <h1 className="text-3xl text-gray-950 font-black text-center md:text-4xl">
+      <Title>
         Leyendas Costarricenses
-      </h1>
+      </Title>
 
       <main className="mt-8">
         <section>
           <div className="flex justify-between items-center">
             <Link to="/crear-leyenda">
               <Button size="small">
-                Agregar leyenda
+                Crear leyenda
               </Button>
             </Link>
 
