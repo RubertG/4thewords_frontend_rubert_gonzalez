@@ -1,32 +1,20 @@
-import { useEffect, useState } from "react"
-import { deleteLegend, getLegends } from "../services/api"
+import { useEffect } from "react"
+import { deleteLegend } from "../services/api"
 import { LegendCard } from "../components/legend-list/LegendCard"
 import { toast } from "sonner"
 import { LegendList } from "../components/legend-list/LegendList"
 import { Loading } from "../../../components/ui/loading"
+import { useLegendsStore } from "../stores/useLegends.store"
 
 export const Home = () => {
-  const [legends, setLegends] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState("")
+  const {
+    error, legends, loading,
+    getLegendsStore, deleteLegendStore
+  } = useLegendsStore(state => state)
 
   useEffect(() => {
-    const fetchLegends = async () => {
-      const { error, data, message } = await getLegends()
-
-      if (error) {
-        setError(message)
-        setLoading(false)
-
-        return
-      }
-
-      setLegends(data)
-      setLoading(false)
-    }
-
-    fetchLegends()
-  }, [])
+    getLegendsStore()
+  }, [getLegendsStore])
 
   const onDelete = async (legendId) => {
     const { error, message } = await deleteLegend(legendId)
@@ -37,8 +25,7 @@ export const Home = () => {
       return
     }
 
-    const newLegends = legends.filter((legend) => legend.id !== legendId)
-    setLegends(newLegends)
+    deleteLegendStore(legendId)
     toast.success(message)
   }
 
@@ -49,20 +36,27 @@ export const Home = () => {
       </h1>
 
       <main>
+        
+
         <LegendList
           loading={loading}
           error={error}
           legends={legends}
           onLoading={<Loading className="mt-4 h-[90dvh] flex justify-center pt-56" />}
-          onError={<li>Ocurrió un error al cargar las leyendas</li>}
-          onEmpty={<li>No hay leyendas para mostrar</li>}
+          onError={
+            <li className="mt-10 text-center">
+              <p>{error}</p>
+              <p>Por favor, intenta recargar la página.</p>
+            </li>
+          }
+          onEmpty={<li></li>}
         >
           {
             (legends) => legends.map((legend) => (
               <LegendCard
                 key={legend.id}
                 legend={legend}
-                onDelete={onDelete}
+                onDelete={() => onDelete(legend.id)}
               />
             ))
           }
