@@ -29,7 +29,7 @@ export const LegendCard = ({
 
       <div className="flex flex-col gap-4 w-full md:flex-row">
         <img
-          className="w-full object-cover object-center rounded-xl aspect-[4/3] bg-gray-200 md:max-w-56"
+          className="w-full object-cover object-center rounded-xl aspect-[4/4] bg-gray-200 max-w-96 mx-auto md:max-w-44"
           src={legend.image_url}
           alt={legend.name}
         />
