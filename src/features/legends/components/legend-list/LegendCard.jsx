@@ -18,7 +18,7 @@ export const LegendCard = ({
   return (
     <li
       className={clsx(
-        "border-b border-gray-200 py-10 last:border-b-0 overflow-hidden w-full md:px-3 md:py-8",
+        "border-b border-gray-200 py-10 last:border-b-0 first:pt-0 overflow-hidden w-full md:px-3 md:py-8",
         className
       )}
     >
@@ -32,6 +32,7 @@ export const LegendCard = ({
           className="w-full object-cover object-center rounded-xl aspect-[4/4] bg-gray-200 max-w-96 mx-auto md:max-w-44"
           src={legend.image_url}
           alt={legend.name}
+          loading="lazy"
         />
 
         <div>
