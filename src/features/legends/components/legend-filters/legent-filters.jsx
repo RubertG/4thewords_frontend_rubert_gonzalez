@@ -1,8 +1,8 @@
 import { FilterX } from "lucide-react"
 import { Button } from "../../../../components/ui/Button"
-import { Input } from "../../../../components/ui/Input"
-import { Label } from "../../../../components/ui/Label"
-import { Option, Select } from "../../../../components/ui/Select"
+import { Input } from "../../../../components/forms/Input"
+import { Label } from "../../../../components/forms/Label"
+import { Option, Select } from "../../../../components/forms/Select"
 
 export const LegendFilters = ({
   className,
