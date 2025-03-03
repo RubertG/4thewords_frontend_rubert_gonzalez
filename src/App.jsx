@@ -1,7 +1,9 @@
+import { AppRoutes } from "./routes/routes";
+
 export default function App() {
   return (
-    <div className="flex justify-center items-center h-screen">
-      <h1>Hello, World!</h1>
-    </div>
+    <main className="px-4 my-6 max-w-6xl mx-auto lg:px-10 lg:my-10">
+      <AppRoutes />
+    </main>
   )
 }
