@@ -8,3 +8,17 @@
 body {
   @apply text-zinc-800;
 }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.2s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
