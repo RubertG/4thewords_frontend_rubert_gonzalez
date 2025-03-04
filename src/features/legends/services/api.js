@@ -23,6 +23,29 @@ export const getLegends = async () => {
   }
 }
 
+export const getLegend = async (id) => {
+  try {
+    const response = await fetch(API_ROUTES.LEGENDS.GET_ONE(id))
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(typeof data?.detail === "string" ? data?.detail : "Error al traer la leyenda")
+    }
+
+    return {
+      error: false,
+      data
+    }
+  } catch (error) {
+    console.error('Error al traer la leyenda', error)
+
+    return {
+      error: true,
+      message: error?.message || "Error al eliminar la leyenda"
+    }
+  }
+}
+
 export const deleteLegend = async (id) => {
   try {
     const response = await fetch(API_ROUTES.LEGENDS.DELETE(id), {
