@@ -1,11 +1,11 @@
 import { LoaderCircle } from "lucide-react"
 
 export const Loading = ({
-  className = ""
+  className = "text-blue-800"
 }) => {
   return (
     <div className={className}>
-      <LoaderCircle className="animate-spin text-blue-800" />
+      <LoaderCircle className="animate-spin" />
     </div>
   )
 }
