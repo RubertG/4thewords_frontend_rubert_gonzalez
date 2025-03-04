@@ -35,6 +35,7 @@ export const LegendForm = ({
           <Input
             placeholder="Ej: 2021-10-31"
             id="legend_date"
+            max={new Date().toISOString().split('T')[0]}
             type="date"
             {...register('legend_date')}
           />
