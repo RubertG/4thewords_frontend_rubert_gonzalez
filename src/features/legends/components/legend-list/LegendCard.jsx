@@ -35,7 +35,7 @@ export const LegendCard = ({
           loading="lazy"
         />
 
-        <div>
+        <div className="w-full">
           <p>
             {legend.description}{" "}
             <i className="text-gray-600 text-sm">{formatted_creation_date}.</i>
