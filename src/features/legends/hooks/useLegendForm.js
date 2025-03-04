@@ -10,7 +10,7 @@ export const useLegendForm = (defaultValues) => {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(legendSchema),
-    defaultValues
+    values: defaultValues
   })
   const imageFile = watch("image_url")
 
