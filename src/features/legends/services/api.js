@@ -47,3 +47,61 @@ export const deleteLegend = async (id) => {
     }
   }
 }
+
+export const createLegend = async (legend) => {
+  try {
+    const response = await fetch(API_ROUTES.LEGENDS.CREATE, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(legend)
+    })
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(typeof data?.detail === "string" ? data?.detail : "Error al crear la leyenda")
+    }
+
+    return {
+      error: false,
+      message: "Leyenda creada correctamente"
+    }
+  } catch (error) {
+    console.error(error)
+
+    return {
+      error: true,
+      message: error?.message || "Error al crear la leyenda"
+    }
+  }
+}
+
+export const updateLegend = async (id, legend) => {
+  try {
+    const response = await fetch(API_ROUTES.LEGENDS.UPDATE(id), {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(legend)
+    })
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(typeof data?.detail === "string" ? data?.detail : "Error al actualizar la leyenda")
+    }
+
+    return {
+      error: false,
+      message: "Leyenda actualizada correctamente"
+    }
+  } catch (error) {
+    console.error(error)
+
+    return {
+      error: true,
+      message: error?.message || "Error al actualizar la leyenda"
+    }
+  }
+}
