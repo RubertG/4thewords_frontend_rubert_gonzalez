@@ -7,16 +7,17 @@ El frontend fue desarrollado utilizando [Vite](https://vitejs.dev/), [React](htt
 ## Variables de entorno
 
 Para el correcto funcionamiento del frontend, se deben configurar las siguientes variables de entorno en un archivo `.env` en la carpeta raíz del proyecto:
+El proyecto de firebase es requerido y despues de la prueba sera eliminado, por facilidad se dejan las variables de entorno de firebase.
 
 ```bash
 VITE_API_URL=http://127.0.0.1:8080 # URL del backend
-VITE_API_KEY=api_key # Clave de la API de firebase
-VITE_AUTH_DOMAIN=auth_domain # Dominio de autenticación de firebase
-VITE_PROJECT_ID=project_id # ID del proyecto de firebase
-VITE_STORAGE_BUCKET=storage_bucket # Bucket de almacenamiento de firebase
-VITE_MESSAGING_SENDER_ID=messaging_sender_id # ID del emisor de mensajes de firebase
-VITE_APP_ID=app_id # ID de la aplicación de firebase
-VITE_MEASUREMENT_ID=measurement_id # ID de medición de firebase
+VITE_API_KEY=AIzaSyDIpfhR_i2Cs-EtlSPXQhCoU2fxZxVpEAU
+VITE_AUTH_DOMAIN=portafolio-web-c279e.firebaseapp.com
+VITE_PROJECT_ID=portafolio-web-c279e
+VITE_STORAGE_BUCKET=portafolio-web-c279e.appspot.com
+VITE_MESSAGING_SENDER_ID=631939093935
+VITE_APP_ID=1:631939093935:web:3d5586a8d90a6471908b5a
+VITE_MEASUREMENT_ID=G-R8S4L8BRVT
 ```
 
 ## Instalación del frontend
